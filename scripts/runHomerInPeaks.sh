@@ -1,8 +1,7 @@
 #!/bin/bash
 
-module load hurcs homer
-# Set the path to the HOMER program
-OUTPUT_DIR="$1" 
+PEAK_FILE="$1"
+OUTPUT_DIR="$2" 
 
 # Check if the HOMER output file exists
 if [ ! -f "$OUTPUT_DIR/all_motifs.txt" ]; then
