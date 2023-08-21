@@ -13,14 +13,11 @@ HomerFindPeaks: This process associates the previously identified motifs with pe
 ## Workflow Structure
 The workflow structure is as follows:
 
-rust
-Copy code
 bed-to-homer -> HomerFindMotif -> create-file-for-finding -> HomerFindPeaks -> analysis
 bed-to-homer: Converts the input region file to Homer-readable format.
 HomerFindMotif: Identifies motifs in the provided genomic regions using Homer.
 create-file-for-finding: Prepares motif files for further analysis.
 HomerFindPeaks: Associates motifs with peaks using Homer.
-analysis: Analysis step (not detailed in the provided script).
 ## Parameters
 The pipeline script makes use of various parameters to control its behavior. Some important parameters include:
 
@@ -32,6 +29,4 @@ params.outputDirHomer: Output directory for Homer results.
 
 Run the pipeline using Nextflow:
 
-bash
-Copy code
 `nextflow run pipeline.nf`
