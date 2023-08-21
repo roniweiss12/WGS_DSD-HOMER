@@ -18,4 +18,4 @@ params.homerFolder: Folder for Homer results.
 
 Run the pipeline using Nextflow:
 
-`nextflow homer_workflow.nf --inputBed /path/to/your/input.bed --homerResults /path/to/your/homer_results.txt`
+`nextflow HOMER_peaks_analysis.nf --inputBed /path/to/your/input.bed --homerResults /path/to/your/homer_results.txt`
