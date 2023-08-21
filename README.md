@@ -10,9 +10,9 @@ The provided Nextflow pipeline automates the following steps:
 
 ## Parameters
 
-params.regionFile: The input region file for motif analysis.
+`params.regionFile`: The input region file for motif analysis.
 
-params.homerFolder: Folder for Homer results.
+`params.homerFolder`: Folder for Homer results.
 
 ## Running the Pipeline
 
