@@ -11,7 +11,7 @@ process runInitialHomer {
 
     script:
     """
-    ./runInitialHomer.sh ${inputBed}
+    ./scripts/runInitialHomer.sh ${inputBed}
     """
 }
 
@@ -22,7 +22,7 @@ process catHomerResults {
 
     script:
     """
-    ./cat_homer_results.sh ${homerResults}
+    ./scripts/catHomerResults.sh ${homerResults}
     """
 }
 
@@ -34,7 +34,7 @@ process runHomerInPeaks {
 
     script:
     """
-    ./runHomerInPeaks.sh ${inputBed} ${homerResults}
+    ./scripts/runHomerInPeaks.sh ${inputBed} ${homerResults}
     """
 }
 
