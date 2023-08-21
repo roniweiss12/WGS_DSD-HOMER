@@ -5,6 +5,7 @@ params.inputBed = ''
 params.homerResults = ''
 params.curProcessedOutputDir = ''
 
+
 // Define the Nextflow process for running runInitialHomer.sh
 process runInitialHomer {
     
