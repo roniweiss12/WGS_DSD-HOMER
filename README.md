@@ -1,32 +1,21 @@
 # Homer Pipeline
-This repository contains a Nextflow pipeline for performing motif analysis using the Homer tool. The pipeline is designed to process regions and motifs to find motifs in genomic regions and associate them with peaks.
+This repository contains a Nextflow pipeline for performing motif analysis in specific regions of the genome using the Homer tool.
 
 ## Pipeline Overview
-The Homer Pipeline consists of several processes that perform specific tasks:
+The provided Nextflow pipeline automates the following steps:
 
-HomerRegion: This process takes an input region file and prepares it for further analysis by copying it to a Homer-readable format.
+1. Running `runInitialHomer.sh` with an input BED file.
+2. Running `cat_homer_results.sh` with the HOMER results file produced by the previous step.
+3. Running `runHomerInPeaks.sh` with the input BED file and the HOMER results produced by the second step.
 
-HomerFindMotif: This process finds motifs in the given genomic regions using the Homer tool. It generates motif files for both known and novel motifs.
-
-HomerFindPeaks: This process associates the previously identified motifs with peaks using the Homer tool.
-
-## Workflow Structure
-The workflow structure is as follows:
-
-bed-to-homer -> HomerFindMotif -> create-file-for-finding -> HomerFindPeaks -> analysis
-bed-to-homer: Converts the input region file to Homer-readable format.
-HomerFindMotif: Identifies motifs in the provided genomic regions using Homer.
-create-file-for-finding: Prepares motif files for further analysis.
-HomerFindPeaks: Associates motifs with peaks using Homer.
 ## Parameters
 The pipeline script makes use of various parameters to control its behavior. Some important parameters include:
 
 params.regionFile: The input region file for motif analysis.
-params.homerTmp: Temporary directory for Homer.
 params.homerFolder: Folder for Homer results.
-params.outputDirHomer: Output directory for Homer results.
+
 ## Running the Pipeline
 
 Run the pipeline using Nextflow:
 
-`nextflow run pipeline.nf`
+`nextflow homer_workflow.nf --inputBed /path/to/your/input.bed --homerResults /path/to/your/homer_results.txt`
