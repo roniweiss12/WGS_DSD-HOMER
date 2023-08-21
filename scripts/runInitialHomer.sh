@@ -1,9 +1,5 @@
 #!/bin/bash
 
-
-# Set the path to the HOMER program
-HOMER_PATH="" # Replace with the actual path to your HOMER binaries
-
 # Check if HOMER is installed and accessible
 #if ! command -v "$HOMER_PATH/findMotifsGenome.pl" &>/dev/null; then
 #  echo "HOMER not found or the path is incorrect. Please set the HOMER_PATH variable correctly."
