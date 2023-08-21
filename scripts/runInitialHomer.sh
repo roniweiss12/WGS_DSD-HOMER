@@ -8,7 +8,7 @@
 
 # Input BED file (hg38 format)
 INPUT_BED="$1"  # Replace with the path to your hg38 BED file
-OUTPUT_DIR="HOMER_res"
+OUTPUT_DIR="HOMER_RES"
 
 # Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
