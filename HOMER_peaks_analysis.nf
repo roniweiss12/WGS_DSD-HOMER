@@ -1,18 +1,23 @@
 #!/usr/bin/env nextflow
 
 // Define input parameters
-params.inputBed = file("$1")
-params.homerResults = file("$2")
+params.inputBed = ''
+params.homerResults = ''
+params.curProcessedOutputDir = ''
 
 // Define the Nextflow process for running runInitialHomer.sh
 process runInitialHomer {
+    
+    publishDir params.curProcessedOutputDir, mode: 'copy'
+
     input:
-    file inputBed
+    Tuple file(inputBed), path(homerResults)
 
     script:
     """
-    ./scripts/runInitialHomer.sh ${inputBed}
+    runInitialHomer.sh $inputBed $homerResults
     """
+
 }
 
 // Define the Nextflow process for running cat_homer_results.sh
@@ -20,9 +25,12 @@ process catHomerResults {
     input:
     file homerResults
 
+    output:
+    path homerResults
+
     script:
     """
-    ./scripts/catHomerResults.sh ${homerResults}
+    catHomerResults.sh ${homerResults}
     """
 }
 
@@ -32,16 +40,19 @@ process runHomerInPeaks {
     file inputBed
     file homerResults
 
+    output:
+    path homerResults
+
     script:
     """
-    ./scripts/runHomerInPeaks.sh ${inputBed} ${homerResults}
+    runHomerInPeaks.sh ${inputBed} ${homerResults}
     """
 }
 
 // Define the workflow
 workflow {
     // Run the steps sequentially
-    runInitialHomer(params.inputBed)
+    runInitialHomer(params.inputBed, params.homerResults, params.curProcessedOutputDir)
     catHomerResults(runInitialHomer.out)
     runHomerInPeaks(params.inputBed, catHomerResults.out)
 }
