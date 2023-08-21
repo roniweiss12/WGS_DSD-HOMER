@@ -1,8 +1,8 @@
 #!/usr/bin/env nextflow
 
 // Define input parameters
-params.inputBed = file("$1")
-params.homerResults = file("$2")
+params.inputBed = ''
+params.homerResults = ''
 
 // Define the Nextflow process for running runInitialHomer.sh
 process runInitialHomer {
