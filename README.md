@@ -1,7 +1,7 @@
-Homer Pipeline
+## Homer Pipeline
 This repository contains a Nextflow pipeline for performing motif analysis using the Homer tool. The pipeline is designed to process regions and motifs to find motifs in genomic regions and associate them with peaks.
 
-Pipeline Overview
+# Pipeline Overview
 The Homer Pipeline consists of several processes that perform specific tasks:
 
 HomerRegion: This process takes an input region file and prepares it for further analysis by copying it to a Homer-readable format.
