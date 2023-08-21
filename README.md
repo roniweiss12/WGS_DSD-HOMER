@@ -28,14 +28,7 @@ params.regionFile: The input region file for motif analysis.
 params.homerTmp: Temporary directory for Homer.
 params.homerFolder: Folder for Homer results.
 params.outputDirHomer: Output directory for Homer results.
-Running the Pipeline
-To run the Homer Pipeline, follow these steps:
-
-Make sure you have Nextflow and the required dependencies (Homer) installed.
-
-Clone this repository to your local machine.
-
-Update the parameters in the pipeline script according to your needs.
+## Running the Pipeline
 
 Run the pipeline using Nextflow:
 
