@@ -34,4 +34,4 @@ Run the pipeline using Nextflow:
 
 bash
 Copy code
-nextflow run pipeline.nf
+`nextflow run pipeline.nf`
