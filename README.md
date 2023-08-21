@@ -9,9 +9,9 @@ The provided Nextflow pipeline automates the following steps:
 3. Running `runHomerInPeaks.sh` with the input BED file and the HOMER results produced by the second step.
 
 ## Parameters
-The pipeline script makes use of various parameters to control its behavior. Some important parameters include:
 
 params.regionFile: The input region file for motif analysis.
+
 params.homerFolder: Folder for Homer results.
 
 ## Running the Pipeline
