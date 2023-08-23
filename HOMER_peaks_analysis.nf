@@ -1,9 +1,10 @@
 #!/usr/bin/env nextflow
 
 // Define input parameters
-params.inputBed = ''
-params.homerResults = ''
-params.curProcessedOutputDir = ''
+params.inputBed = ""
+params.homerResults = ""
+params.homerWork = ""
+params.curProcessedOutputDir = ""
 
 // Define the Nextflow process for running runInitialHomer.sh
 process runInitialHomer {
@@ -11,48 +12,59 @@ process runInitialHomer {
     publishDir params.curProcessedOutputDir, mode: 'copy'
 
     input:
-    Tuple file(inputBed), path(homerResults)
+    file params.inputBed
+    val params.homerResults
+    val params.homerWork
+
+    output:
+    path params.homerResults
 
     script:
     """
-    runInitialHomer.sh $inputBed $homerResults
+    runInitialHomer.sh $params.inputBed $params.homerResults $params.homerWork
     """
 
 }
 
 // Define the Nextflow process for running cat_homer_results.sh
 process catHomerResults {
+
+    publishDir params.curProcessedOutputDir, mode: 'copy'
+
     input:
-    file homerResults
+    val params.homerResults
 
     output:
-    path homerResults
+    file '$params.homerResults/all_motifs.txt'
 
     script:
     """
-    catHomerResults.sh ${homerResults}
+    catHomerResults.sh $params.homerResults
     """
 }
 
 // Define the Nextflow process for running runHomerInPeaks.sh
 process runHomerInPeaks {
+    
+    publishDir params.curProcessedOutputDir, mode: 'copy'
+
     input:
-    file inputBed
-    file homerResults
+    file params.inputBed
+    val params.homerResults
+    val params.homerWork
 
     output:
-    path homerResults
+    file '$params.homerResults/peaks_motif.tsv'
 
     script:
     """
-    runHomerInPeaks.sh ${inputBed} ${homerResults}
+    runHomerInPeaks.sh $params.inputBed $params.homerResults $params.homerWork
     """
 }
 
 // Define the workflow
 workflow {
-    // Run the steps sequentially
-    runInitialHomer(params.inputBed, params.homerResults, params.curProcessedOutputDir)
-    catHomerResults(runInitialHomer.out)
-    runHomerInPeaks(params.inputBed, catHomerResults.out)
+    runInitialHomer(params.inputBed, params.homerResults, params.homerWork)
+    catHomerResults(params.homerResults)
+    runHomerInPeaks(params.inputBed, params.homerResults, params.homerWork)
 }
