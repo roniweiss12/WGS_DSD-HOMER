@@ -9,7 +9,7 @@
 # Input BED file (hg38 format)
 INPUT_BED="$1"  # Replace with the path to your hg38 BED file
 OUTPUT_DIR="$2"
-WORK_DIR="$3"
+WORK_DIR="$1"
 
 # Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
