@@ -18,4 +18,4 @@ The provided Nextflow pipeline automates the following steps:
 
 Run the pipeline using Nextflow:
 
-`nextflow WGS_DSD-HOMER/HOMER_peaks_analysis.nf --inputBed 'path/to/file.bed' --homerResults 'results/path' --curProcessedOutputDir homer_results`
+`nextflow WGS_DSD-HOMER/HOMER_peaks_analysis.nf --inputBed 'path/to/file.bed' --homerResults 'results/path'`
