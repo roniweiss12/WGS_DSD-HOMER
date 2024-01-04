@@ -8,6 +8,7 @@ The provided Nextflow pipeline automates the following steps:
 2. `cat_homer_results` with the HOMER results files produced by the previous step.
 3. `runHomerInPeaks` running Homer on the subject bed file, while subtracting the motifs found in the background BED file.
 4. `find_relevant_motifs.py` find relevant motifs of TF, provided in keyTF.csv, in the result motifs.
+5. `convert_output_to_final_format.R` to fit into same format as all TFBS tools.
 
 ## Parameters
 
@@ -17,7 +18,9 @@ The provided Nextflow pipeline automates the following steps:
 
 `params.homerResults` - results directory
 
-`params.bin` - path to directory containing scripts and additional files such as keyTF.csv (a list of TF of interest)
+`params.bin` - path to a directory containing scripts and additional files
+
+`params.tfListFile` - a list of TF of interest
 
 ## Running the Pipeline
 
